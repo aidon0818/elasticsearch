@@ -1,6 +1,7 @@
 package com.example.elasticsearch.controller;
 
 
+import com.example.elasticsearch.dao.EmployeeRepository;
 import com.example.elasticsearch.model.Employee;
 import com.example.elasticsearch.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/es")
 public class ElasticSearchController {
     @Autowired
-    private EmployeeService employeeService;
+    private EmployeeRepository employeeRepository;
 
     @RequestMapping("/add")
     public String add() {
@@ -21,7 +22,7 @@ public class ElasticSearchController {
         employee.setLastName("zh");
         employee.setAge(26);
         employee.setAbout("i am in peking");
-        employeeService.save(employee);
+        employeeRepository.save(employee);
         return "success";
     }
 }
